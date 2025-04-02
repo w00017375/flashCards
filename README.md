@@ -2,4 +2,4 @@ I created a flashcards project website where users can create their account and 
 
 The link to github repo: https://github.com/w00017375/flashCards
 
-The link to public running website: https://flashcards-1-qxrv.onrender.com
+The link to public running website: https://flashcards-21.onrender.com
