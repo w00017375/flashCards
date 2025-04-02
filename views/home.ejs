@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="flashcards-header">
+    <div class="header-logo">
+      <a href="/" class="logo">FlashCards</a>
+    </div>
+    <nav class="header-nav">
+      <div class="nav-section">
+        <a href="/flashcards">My Cards</a>
+        <a href="/flashcards/create">Create New Card</a>
+      </div>
+      <div class="nav-section">
+        <% if (user) { %>
+          <a href="/profile">Profile</a>
+          <a href="/logout">Log Out</a>
+        <% } else { %>
+          <a href="/login">Log In</a>
+          <a href="/register">Register</a>
+        <% } %>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Part -->
+  <main class="container">
+    <h1>All Flashcards</h1>
+    <% if (!user) { %>
+    <p>Explore flashcards created by all users. Log in to create your own!</p>
+    <% }  %>
+    <% if (flashcards && flashcards.length > 0) { %>
+      <div class="flashcards-grid">
+        <% flashcards.forEach(card => { %>
+          <div class="flashcard">
+            <div class="flashcard-header">
+              <h2><%= card.front %></h2>
+              <p class="language-topic"><%= card.language %> - <%= card.topic %></p>
+            </div>
+            <div class="flashcard-details">
+              <p><strong>Translation:</strong> <%= card.back.translation %></p>
+              <p><strong>Pronunciation:</strong> <%= card.back.pronunciation %></p>
+              <p><strong>Example:</strong> <%= card.back.example %></p>
+              <p><strong>Part of Speech:</strong> <%= card.back.partOfSpeech %></p>
+            </div>
+            <% if ( user && user.id === card.userId) { %>
+              <div class="card-actions">
+                <a href="/flashcards/update/<%= card.id %>">Edit</a>
+                <form action="/flashcards/delete/<%= card.id %>" method="POST" style="display:inline;">
+                  <button type="submit">Delete</button>
+                </form>
+              </div>
+            <% } %>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p>No flashcards available yet. Create your first flashcard now!</p>
+    <% } %>
+    <% if (!user) { %>
+      <div class="auth-links">
+        <a href="/register">Register Now</a> | <a href="/login">Log In</a>
+      </div>
+    <% } else { %>
+      <div class="auth-links">
+        <a href="/flashcards">Go to My Cards</a>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>

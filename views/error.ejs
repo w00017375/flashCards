@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <header class="flashcards-header">
+    <div class="header-logo">
+      <a href="/" class="logo">FlashCards</a>
+    </div>
+    <nav class="header-nav">
+      <div class="nav-section">
+        <a href="/flashcards">My Cards</a>
+        <a href="/flashcards/create">Create New Card</a>
+      </div>
+      <div class="nav-section">
+        <% if (user) { %>
+          <a href="/profile">Profile</a>
+          <a href="/logout">Log Out</a>
+        <% } else { %>
+          <a href="/login">Log In</a>
+          <a href="/register">Register</a>
+        <% } %>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <h1>Error</h1>
+    <p><%= message %></p>
+    <a href="/flashcards">Back to My Cards</a>
+  </main>
+</body>
+</html>

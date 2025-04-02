@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "userId": "ZopV",
+    "language": "Spanish",
+    "topic": "Greetings",
+    "front": "Hola",
+    "back": {
+      "translation": "Hello",
+      "pronunciation": "/ˈo.la/",
+      "example": "Hola, ¿cómo estás? (Hello, how are you?)",
+      "partOfSpeech": "Interjection"
+    }
+  },
+  {
+    "id": "iPn2",
+    "userId": "ZopV",
+    "language": "German",
+    "topic": "Greetings",
+    "front": "Hallo",
+    "back": {
+      "translation": "Hello",
+      "pronunciation": "Allo",
+      "example": "Hallo, freund",
+      "partOfSpeech": "Greeting"
+    }
+  }
+]

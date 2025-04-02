@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <header class="flashcards-header">
+    <div class="header-logo">
+      <a href="/" class="logo">FlashCards</a>
+    </div>
+    <nav class="header-nav">
+      <div class="nav-section">
+        <a href="/flashcards">My Cards</a>
+        <a href="/flashcards/create">Create New Card</a>
+      </div>
+      <div class="nav-section">
+        <% if (user) { %>
+          <a href="/profile">Profile</a>
+          <a href="/logout">Log Out</a>
+        <% } else { %>
+          <a href="/login">Log In</a>
+          <a href="/register">Register</a>
+        <% } %>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <h1>Profile</h1>
+    <% if (!user) { %>
+      <p class="error-message">User data not found. Please log in again.</p>
+    <% } else { %>
+      <form action="/profile/update" method="POST" class="edit-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" value="<%= user.username || '' %>" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Update Profile</button>
+        </div>
+      </form>
+      <p class="auth-links"><a href="/flashcards">Back to My Cards</a></p>
+    <% } %>
+  </main>
+</body>
+</html>
